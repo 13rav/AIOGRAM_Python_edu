@@ -17,7 +17,7 @@ async def description_message(message: types.Message):
 
 @dp.message_handler ()
 async def send_random_letter(message: types.Message):
-    if Message.ContentType :
+    if Message. :
         await message.answer(text="send photo")
     else:
         await message.answer(random.choice(string.ascii_letters))
