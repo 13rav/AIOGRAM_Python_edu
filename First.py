@@ -11,3 +11,5 @@ async def echo(message: types.Message):
     await message.answer(text="прислали фото")
 if __name__ == '__main__':
     executor.start_polling(dp)
+
+    #fer
