@@ -1,4 +1,4 @@
-from email import message
+
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.types import ContentType, ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 
@@ -7,6 +7,10 @@ TOKEN_API = '5371538285:AAGP91laa0Cbgs978G9-VnWS3DR3nv6FYz4'
 
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
+Button1 = KeyboardButton('/sticker')
+Button2 = KeyboardButton('/photo')
+keybordTest = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+keybordTest.add(Button1).insert(Button2)
 
 HELP_COMMAND = """"Это тестовый бот, и он становится умнее
 
@@ -15,7 +19,7 @@ HELP_COMMAND = """"Это тестовый бот, и он становится 
 
 @dp.message_handler(commands=['help'])
 async def help_command(message: types.Message):
-    await message.answer(text=HELP_COMMAND, parse_mode='HTML')
+    await message.answer(text=HELP_COMMAND, parse_mode='HTML', reply_markup=keybordTest)
 
 @dp.message_handler(commands=['sticker'])
 async def sticker_command(message: types.Message):
