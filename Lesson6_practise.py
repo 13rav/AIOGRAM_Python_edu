@@ -32,7 +32,7 @@ async def send_sticker(message: types.Message):
 # @dp.message_handler()
 # async def send_reverse_emoji(message: types.Message):
 #    if message.text=="\U00002764 ":
-#        await message.answer("\U0001f5a4")
+#        await message.answer("\U0001f5a4") rrrr
 
 if __name__ == '__main__':
     executor.start_polling(dp)
