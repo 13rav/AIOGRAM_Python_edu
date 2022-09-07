@@ -13,12 +13,14 @@ HELP_COMMAND = """"Это тестовый бот, и он становится 
 
 Button1 = KeyboardButton('/sticker')
 Button2 = KeyboardButton('/photo')
+Button3 = KeyboardButton('/location')
 
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
 
 kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 kb.add(Button1).insert(Button2)
+kb.add(Button3)
 
 @dp.message_handler(commands=['help'])
 async def help_command(message: types.Message):
