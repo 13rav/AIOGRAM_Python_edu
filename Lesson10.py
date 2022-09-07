@@ -20,7 +20,7 @@ rKeyBoard.add(Button1)
 iKeyBoard = InlineKeyboardMarkup(row_width=2)
 iButton1 = InlineKeyboardButton(text='Google', url='https://www.google.com')
 iButton2 = InlineKeyboardButton(text='Yandex', url='https://www.yandex.ru')
-iKeyBoard.add([iButton1, iButton2])
+iKeyBoard.add(iButton1).add(iButton2)
 
 @dp.message_handler(commands=['start'])
 async def sendKeyBoard(message: types.Message):
@@ -28,7 +28,7 @@ async def sendKeyBoard(message: types.Message):
 
 @dp.message_handler(commands=['links'])
 async def InlineSend(message: types.Message):
-    await bot.send_message(chat_id=message.chat.id, reply_markup=iKeyBoard)
+    await bot.send_message(chat_id=message.chat.id, text='Links', reply_markup=iKeyBoard)
     await message.delete()
 
 if __name__ == '__main__':
