@@ -15,7 +15,7 @@ keybordTest.add(Button1).insert(Button2)
 HELP_COMMAND = """"Это тестовый бот, и он становится умнее
 
 <b>/sticker</b> отправляет стикер чык-чырыка
-<b>/photo</b> отправляет фото Пашы Дурова"""
+<b>/photo</b> отправляет фото Паши Дурова"""
 
 @dp.message_handler(commands=['help'])
 async def help_command(message: types.Message):

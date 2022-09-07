@@ -8,7 +8,7 @@ TOKEN_API = '5371538285:AAGP91laa0Cbgs978G9-VnWS3DR3nv6FYz4'
 HELP_COMMAND = """"Это тестовый бот, и он становится умнее
 
 <b>/sticker</b> отправляет стикер чык-чырыка
-<b>/photo</b> отправляет фото Пашы Дурова
+<b>/photo</b> отправляет фото Паши Дурова
 <b>/location</b> отправляет случайную точку на карте"""
 
 Button1 = KeyboardButton('/sticker')
