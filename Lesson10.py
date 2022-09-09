@@ -29,7 +29,6 @@ async def sendKeyBoard(message: types.Message):
 @dp.message_handler(commands=['links'])
 async def InlineSend(message: types.Message):
     await bot.send_message(chat_id=message.chat.id, text='Links', reply_markup=iKeyBoard)
-    await message.delete()
 
 if __name__ == '__main__':
     executor.start_polling(dp)
