@@ -23,6 +23,10 @@ async def start_command(message: types.Message):
     await bot.send_message(chat_id=message.chat.id, text='Hello. This is smail bot', 
                             reply_markup=rKeyBoard)
 
+@dp.message_handler(commands=['help'])
+async def help_command(message: types.Message):
+    await bot.send_message(chat_id=message.chat.id, text='Ничего не придумали, но скоро придумаем')
+
 @dp.message_handler(commands=['vote'])
 async def vote_command(message: types.Message):
     await bot.send_sticker(chat_id=message.chat.id, 
