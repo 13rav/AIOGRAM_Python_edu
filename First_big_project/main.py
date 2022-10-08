@@ -2,6 +2,7 @@ from ast import main
 from aiogram import Bot, Dispatcher, executor, types
 
 from TOKEN import TOKEN_API
+from keyboard import rKeyboard
 
 
 bot = Bot(TOKEN_API)
