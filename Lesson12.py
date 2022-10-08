@@ -2,7 +2,6 @@ from email.message import Message
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.types import ContentType, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 import random
-from Lesson5 import send_message
 from TOKEN import TOKEN_API
 
 bot = Bot(TOKEN_API)
