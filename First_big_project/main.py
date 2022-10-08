@@ -11,7 +11,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def startCommand (message: types.Message):
-    await message.answer(text='Answer')
+    await message.answer(text='Answer', reply_markup=rKeyboard)
 
 
 if __name__ == '__main__':
