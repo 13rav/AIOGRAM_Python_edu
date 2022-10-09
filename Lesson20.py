@@ -1,29 +1,31 @@
 import random
 import asyncio
 
-b = 3 * random.randrange(3, 200)
+b = 3 * random.randrange(3, 20)
 k =1 
 
-async def EverySecond():
+async def EverySecond()-> None:
     global k
     k = 1
     while k < b:
-        await asyncio.Sleep(1)
+        await asyncio.sleep(1)
         print(f"Прошло {k} секунд")
         k=k+1
-    return None
 
-async def EveryThreeSecond():
+async def EveryThreeSecond()-> None:
     global k
     while k < b:
-        await asyncio.Sleep(3)
-        rint(f"Прошло {k} секунд")
-    return None
+        await asyncio.sleep(3)
+        print(""" !!!
+        !!!
+        ПРОШЛО 3 СЕКУНДЫ""")
 
-async def main():
+async def main() -> None:
 
     task_1 = asyncio.create_task(EverySecond())
-    task_1 = asyncio.create_task(EveryThreeSecond())
-    return None
+    task_2 = asyncio.create_task(EveryThreeSecond())
+    
+    await task_1
+    await task_2
 
 asyncio.run(main())
