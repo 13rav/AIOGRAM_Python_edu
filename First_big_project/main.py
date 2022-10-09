@@ -1,4 +1,3 @@
-from ast import main
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 import random
@@ -11,7 +10,7 @@ from keyboard import rKeyboard, photoKeyboard
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
 
-HELP_COMMAND = """Этот знает три команды
+HELP_COMMAND = """Этот бот знает три команды
 /help         - показывает список комманд
 /description  - показывает описание бота
 Random photo  - отправляет случайное фото"""
