@@ -25,6 +25,7 @@ async def RandomPhotoCommand (message: types.Message):
 
 @dp.message_handler(Text(equals='Фото'))
 async def PhotoSendCommand (message: types.Message):
+    await message.delete()
     try:
         await bot.send_photo(chat_id=message.chat.id, photo=f'https://avatarko.ru/kartinka/{random.randrange(1, 6000)}/download_image')
     except InvalidHTTPUrlContent:
