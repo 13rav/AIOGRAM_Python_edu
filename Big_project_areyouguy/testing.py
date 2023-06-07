@@ -22,14 +22,16 @@ GlobalDB2 = {"chat_id_246464":''}
 GlobalDB2["chat_id_246464"] = dict({'fvf':[]})
 GlobalDB2["chat_id_246464"]['fvf'].append(435)
 GlobalDB2["chat_id_246464"]['fvf'].append(43544)
+GlobalDB2.update({"chat_id_243336464":''})
 
 
 print(GlobalDB2)
 #print(bool1)
 
 class MyVisitor:
-    def registr_0(self):
-        print(0)
+
+    def register_0(self):
+        print("0 " + str(self.fiction))
 
     def register_1(self):
         print(1)
@@ -42,11 +44,12 @@ class MyVisitor:
         method = getattr(self, method_name)
         method()
 
-    Vist = self.dispatch()
 
+Visit = MyVisitor()
+Visit.fiction = '432'
+Visit.dispatch('0')
 
-Visit('2')
-
-def func():
-     print(45)
-
+s=0
+d= '643747' in GlobalDB["64747"]["memberID"]
+s=s+d
+print(s)
