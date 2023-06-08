@@ -50,6 +50,6 @@ Visit.fiction = '432'
 Visit.dispatch('0')
 
 s=0
-d= '643747' in GlobalDB["64747"]["memberID"]
+d= '54456' in GlobalDB["64747"]["memberID"]
 s=s+d
 print(s)

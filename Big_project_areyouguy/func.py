@@ -17,7 +17,10 @@ class reg_user:
         return text_msg_answer
 
     def reg_user_1(self):
-        print(1)
+        global GlobalDB
+        GlobalDB[self.chatID]["membersID"].append(self.id_int)
+        text_msg_answer = 'User added'+str(GlobalDB)
+        return text_msg_answer
     
     def reg_user_2(self):
         print(2)
@@ -40,7 +43,7 @@ def check_user(chatID, id_int, username_str):
     bool1 = bool1 + S
 
     try:
-        S=id_int in GlobalDB[chatID][membersID]  
+        S=id_int in GlobalDB[chatID]["membersID"]  
     except KeyError:
         S=False
         bool1=bool1+S
@@ -49,8 +52,10 @@ def check_user(chatID, id_int, username_str):
     call_reg_user.id_int = id_int
     call_reg_user.username_str = username_str
     
-    record = call_reg_user.choose_method(bool1)
-    return record
+    return call_reg_user.choose_method(bool1)
+    #return record
 
 
-#print(check_user(32234, 54343, 'userhhhe'))
+print(check_user(32234, 54343, 'userhhhe'))
+
+print(check_user(32234, 5434443, 'userhhhe'))
