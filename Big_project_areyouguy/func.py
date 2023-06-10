@@ -1,4 +1,5 @@
 GlobalDB = {}
+IDTOuser = {}
 """ GlobalDB={
     chat_id:{
     membersID:[],
@@ -11,19 +12,42 @@ class reg_user:
 
     def reg_user_0(self):
         global GlobalDB
+        global IDTOuser
+
         GlobalDB.update({self.chatID:dict({"membersID":[]})})
         GlobalDB[self.chatID]["membersID"].append(self.id_int)
-        text_msg_answer = 'User added'+str(GlobalDB)
+        IDTOuser.update({self.id_int:self.username_str})
+        GlobalDB[self.chatID].update({self.id_int:0})
+
+        text_msg_answer = 'User added '+str(GlobalDB) + '''
+        соответстиве id - username 
+
+        '''+str(IDTOuser)
         return text_msg_answer
 
     def reg_user_1(self):
         global GlobalDB
+        global IDTOuser
+
         GlobalDB[self.chatID]["membersID"].append(self.id_int)
-        text_msg_answer = 'User added'+str(GlobalDB)
+        IDTOuser.update({self.id_int:self.username_str})
+        GlobalDB[self.chatID].update({self.id_int:0})
+
+        text_msg_answer = 'User added '+str(GlobalDB) + '''
+        соответстиве id - username 
+
+        '''+str(IDTOuser)
         return text_msg_answer
     
     def reg_user_2(self):
-        print(2)
+        global IDTOuser
+        IDTOuser.update({self.id_int:self.username_str})
+
+        text_msg_answer = 'User added '+str(GlobalDB) + '''
+        соответстиве id - username 
+
+        '''+str(IDTOuser)
+        return text_msg_answer
 
     def choose_method(self, value):
         method_name = "reg_user_"+str(value)
@@ -37,25 +61,19 @@ call_reg_user = reg_user()
 
 def check_user(chatID, id_int, username_str):
 
-    bool1 = 0
+    choose_reg_method = 0
 
-    S=chatID in GlobalDB.keys()
-    bool1 = bool1 + S
+    bool_p1=chatID in GlobalDB.keys()
+    choose_reg_method = choose_reg_method + bool_p1
 
     try:
-        S=id_int in GlobalDB[chatID]["membersID"]  
+        bool_p1=id_int in GlobalDB[chatID]["membersID"]  
     except KeyError:
-        S=False
-        bool1=bool1+S
+        bool_p1 =False
+        choose_reg_method=choose_reg_method+bool_p1
 
     call_reg_user.chatID = chatID
     call_reg_user.id_int = id_int
     call_reg_user.username_str = username_str
     
-    return call_reg_user.choose_method(bool1)
-    #return record
-
-
-print(check_user(32234, 54343, 'userhhhe'))
-
-print(check_user(32234, 5434443, 'userhhhe'))
+    return call_reg_user.choose_method(choose_reg_method)
