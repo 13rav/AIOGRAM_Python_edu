@@ -30,7 +30,7 @@ async def nomination(message: types.Message):
     #member = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
     id_nomination = random.choice(GlobalDB[message.chat.id]['membersID'])
     GlobalDB[message.chat.id][id_nomination] = GlobalDB[message.chat.id][id_nomination]+1
-    await bot.send_message(text="пидор дня @"+IDTOuser[id_nomination])
+    await bot.send_message(text="пидор дня @"+IDTOuser[id_nomination], chat_id=message.chat.id)
 
 
 if __name__ == '__main__':
