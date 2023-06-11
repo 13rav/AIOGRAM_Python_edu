@@ -77,3 +77,9 @@ def check_user(chatID, id_int, username_str):
     call_reg_user.username_str = username_str
     
     return call_reg_user.choose_method(choose_reg_method)
+
+def updateDB_thePIDOR(chat_int, id_int):
+    global GlobalDB
+
+    GlobalDB[chat_int][id_int] = GlobalDB[chat_int][id_int]+1
+    return "Succes update"+str(GlobalDB)

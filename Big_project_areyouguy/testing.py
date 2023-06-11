@@ -1,4 +1,5 @@
 import random
+import datetime, time
 
 #chatID='64747'
 """ GlobalDB = {
@@ -56,5 +57,12 @@ def add_DB(value):
 
     GlobalDB["chat1"]["membersID"].append(value)
     GlobalDB["chat1"].update(dict({value:0}))
+
+print('yygu')
+offset = datetime.timedelta(hours=-3)
+tzinf = datetime.timezone(offset, name="buenos")
+now = datetime.datetime.now(tz=tzinf)
+print(now.strftime("%w"))
+print(now)
 
 
