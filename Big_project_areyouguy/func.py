@@ -4,6 +4,7 @@ IDTOuser = {}
     chat_id:{
     membersID:[],
     userIsGay:0
+    todayNomination:True
     }
 } 
     IDTOuser={id_int:username}
@@ -18,6 +19,7 @@ class reg_user:
         GlobalDB[self.chatID]["membersID"].append(self.id_int)
         IDTOuser.update({self.id_int:self.username_str})
         GlobalDB[self.chatID].update({self.id_int:0})
+        GlobalDB[self.chatID].update({"todayNomination":False})
 
         text_msg_answer = 'User added '+str(GlobalDB) + '''
         соответстиве id - username 
@@ -82,4 +84,5 @@ def updateDB_thePIDOR(chat_int, id_int):
     global GlobalDB
 
     GlobalDB[chat_int][id_int] = GlobalDB[chat_int][id_int]+1
+    GlobalDB
     return "Succes update"+str(GlobalDB)

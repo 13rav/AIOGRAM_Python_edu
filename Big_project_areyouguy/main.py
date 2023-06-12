@@ -32,7 +32,7 @@ async def nomination(message: types.Message):
     global GlobalDB
     global nowday
     #member = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if nowday != now.strftime("%w"):
+    if nowday != now.strftime("%w") and GlobalDB[message.chat.id]["todayNomination"]:
         id_nomination = random.choice(GlobalDB[message.chat.id]['membersID'])
         nowday = now.strftime("%w")
     #GlobalDB[message.chat.id][id_nomination] = GlobalDB[message.chat.id][id_nomination]+1
