@@ -71,7 +71,8 @@ def check_user(chatID, id_int, username_str):
     choose_reg_method = choose_reg_method + bool_p1
 
     try:
-        bool_p1=id_int in GlobalDB[chatID]["membersID"]  
+        bool_p1=id_int in GlobalDB[chatID]["membersID"]
+        choose_reg_method = choose_reg_method + bool_p1  
     except KeyError:
         bool_p1 =False
         choose_reg_method=choose_reg_method+bool_p1
@@ -82,9 +83,10 @@ def check_user(chatID, id_int, username_str):
     
     return call_reg_user.choose_method(choose_reg_method)
 
-def updateDB_thePIDOR(chat_int, id_int):
+def updateDB_thePIDOR(chat_int, id_int, nowDay):
     global GlobalDB
 
     GlobalDB[chat_int][id_int] = GlobalDB[chat_int][id_int]+1
-    GlobalDB
+    GlobalDB[chat_int]["nowDay"] = nowDay
+    GlobalDB[chat_int]["id_thePIDOR"] = id_int
     return "Succes update"+str(GlobalDB)

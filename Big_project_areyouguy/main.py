@@ -31,16 +31,27 @@ async def nomination(message: types.Message):
     global GlobalDB
 
     chatInGlobalDB = GlobalDB.get(message.chat.id)
-    
-    #member = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if nowday != now.strftime("%w") and GlobalDB[message.chat.id]["todayNomination"]:
+
+    try:
+        checkMembersID = bool(GlobalDB[message.chat.id]["membersID"])
+    except Exception as er:
+        checkMembersID = False
+
+    if chatInGlobalDB is None:
+        await bot.send_message(text="воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
+        return None
+    if checkMembersID == False:
+        await bot.send_message(text="воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
+        return None
+    if GlobalDB[message.chat.id]["nowDay"] != now.strftime("%w"):
         id_nomination = random.choice(GlobalDB[message.chat.id]['membersID'])
-        nowday = now.strftime("%w")
+        nowDay = now.strftime("%w")
     #GlobalDB[message.chat.id][id_nomination] = GlobalDB[message.chat.id][id_nomination]+1
-        check_result01 = updateDB_thePIDOR(message.chat.id, id_nomination)
+        check_result01 = updateDB_thePIDOR(message.chat.id, id_nomination, nowDay)
         await bot.send_message(text="пидор дня @"+IDTOuser[id_nomination], chat_id=message.chat.id)
+        return None
     
-    await bot.send_message(text="пидоря дня уже номинирован", )
+    await bot.send_message(text="пидоря дня уже номинирован. И это @"+IDTOuser[GlobalDB[message.chat.id]["id_thePIDOR"]], chat_id=message.chat.id)
 
 
 

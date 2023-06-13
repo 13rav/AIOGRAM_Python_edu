@@ -26,13 +26,13 @@ def update_DB():
     GlobalDB["chat1"]["membersID"].append(364364361)
     GlobalDB["chat1"]["membersID"].append(453788931999335)
 
-    #GlobalDB["chat2"]["membersID"].append(453788931999335)
-    #GlobalDB["chat2"]["membersID"].append(453799335)
-    #GlobalDB["chat2"]["membersID"].append(7188723674)
-    #GlobalDB["chat2"]["membersID"].append(71727843529)
-    #GlobalDB["chat2"]["membersID"].append(78723674)
-    #GlobalDB["chat2"]["membersID"].append(834657813)
-####
+    GlobalDB["chat2"]["membersID"].append(453788931999335)
+    GlobalDB["chat2"]["membersID"].append(453799335)
+    GlobalDB["chat2"]["membersID"].append(7188723674)
+    GlobalDB["chat2"]["membersID"].append(71727843529)
+    GlobalDB["chat2"]["membersID"].append(78723674)
+    GlobalDB["chat2"]["membersID"].append(834657813)
+
     GlobalDB["chat1"].update(dict({234234123421:4}))
     GlobalDB["chat1"].update(dict({234264364361:1}))
     GlobalDB["chat1"].update(dict({364364361:1}))
@@ -58,6 +58,21 @@ def add_DB(value):
     GlobalDB["chat1"]["membersID"].append(value)
     GlobalDB["chat1"].update(dict({value:0}))
 
+def checking():
+    chatInGlobalDB = GlobalDB.get("chat2")
+
+    try:
+        checkMembersID = bool(GlobalDB["messaged"]["membersID"])
+    except Exception as er:
+        checkMembersID = False
+
+    if chatInGlobalDB is None:
+        print("зарегайся в боте")
+        return None
+    g=324+5
+    print(g)
+
+
 print('yygu')
 offset = datetime.timedelta(hours=-3)
 tzinf = datetime.timezone(offset, name="buenos")
@@ -66,6 +81,6 @@ print(now.strftime("%w"))
 print(now)
 
 update_DB()
-print(bool(GlobalDB["chat2"]["membersID"]))
+checking()
 
 
