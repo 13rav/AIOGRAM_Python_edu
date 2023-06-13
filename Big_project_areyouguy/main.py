@@ -7,7 +7,6 @@ import random, datetime
 offset = datetime.timedelta(hours=3)
 tzinf = datetime.timezone(offset, name="MSK")
 now = datetime.datetime.now(tz=tzinf)
-nowday = None
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
 
@@ -30,7 +29,9 @@ async def reg_command(message: types.Message):
 @dp.message_handler(commands=['thePIDOR'])
 async def nomination(message: types.Message):
     global GlobalDB
-    global nowday
+
+    chatInGlobalDB = GlobalDB.get(message.chat.id)
+    
     #member = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
     if nowday != now.strftime("%w") and GlobalDB[message.chat.id]["todayNomination"]:
         id_nomination = random.choice(GlobalDB[message.chat.id]['membersID'])

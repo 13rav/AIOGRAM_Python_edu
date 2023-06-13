@@ -4,7 +4,8 @@ IDTOuser = {}
     chat_id:{
     membersID:[],
     userIsGay:0
-    todayNomination:True
+    nowDay:0
+    id_thePIDOR: 
     }
 } 
     IDTOuser={id_int:username}
@@ -19,7 +20,8 @@ class reg_user:
         GlobalDB[self.chatID]["membersID"].append(self.id_int)
         IDTOuser.update({self.id_int:self.username_str})
         GlobalDB[self.chatID].update({self.id_int:0})
-        GlobalDB[self.chatID].update({"todayNomination":False})
+        GlobalDB[self.chatID].update({"nowDay":None})
+        GlobalDB[self.chatID].update({"id_thePIDOR":0})
 
         text_msg_answer = 'User added '+str(GlobalDB) + '''
         соответстиве id - username 
