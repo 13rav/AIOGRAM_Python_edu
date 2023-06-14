@@ -64,6 +64,7 @@ call_reg_user = reg_user()
 
 
 def check_user(chatID, id_int, username_str):
+    global GlobalDB
 
     choose_reg_method = 0
 

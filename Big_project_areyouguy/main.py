@@ -4,8 +4,8 @@ from TOKEN import TOKEN_API
 from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR
 import random, datetime
 
-offset = datetime.timedelta(hours=3)
-tzinf = datetime.timezone(offset, name="MSK")
+offset_utc = datetime.timedelta(hours=3)
+tzinf = datetime.timezone(offset_utc, name="MSK")
 now = datetime.datetime.now(tz=tzinf)
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
