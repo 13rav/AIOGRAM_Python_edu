@@ -73,14 +73,15 @@ def checking():
     print(g)
 
 
-print('yygu')
-offset = datetime.timedelta(hours=-3)
-tzinf = datetime.timezone(offset, name="buenos")
-now = datetime.datetime.now(tz=tzinf)
-print(now.strftime("%w"))
-print(now)
+def statistic(chat_int):
+    global GlobalDB, IDTOuser
+    text=""
+    test2 = dict()
+
+    for i in GlobalDB[chat_int]["membersID"]:
+        test2.update({i:GlobalDB[chat_int][i]})
+
+    print(test2)
 
 update_DB()
-checking()
-
-
+statistic("chat1")

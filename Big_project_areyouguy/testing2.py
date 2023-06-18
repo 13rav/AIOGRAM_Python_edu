@@ -1,17 +1,9 @@
-from testing import GlobalDB, IDTOuser, update_DB, choose, add_DB
-import random
+test_dic={"Alice":6, "Bob":1, "Green":1, "Harry":3, "Liza":5}
 
-update_DB()
-choose()
+sorted_dic = dict(sorted(test_dic.items(), key = lambda item: item[0]))
 
+print(sorted_dic)
+for i in range(0, 1, 2):
+    sorted2_dic = test_dic.items()
 
-temp_int = random.choice(GlobalDB['chat1']['membersID'])
-GlobalDB['chat1'][temp_int] = GlobalDB['chat1'][temp_int]+1
-print("пидор дня @"+IDTOuser[temp_int])
-print(GlobalDB['chat1'][temp_int])
-
-def add_db2():
-    GlobalDB['chat1'][temp_int] = GlobalDB['chat1'][temp_int]+1
-add_DB(7832878823)
-
-print(GlobalDB)
+print(sorted2_dic)

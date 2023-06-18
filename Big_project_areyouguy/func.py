@@ -91,3 +91,17 @@ def updateDB_thePIDOR(chat_int, id_int, nowDay):
     GlobalDB[chat_int]["nowDay"] = nowDay
     GlobalDB[chat_int]["id_thePIDOR"] = id_int
     return "Succes update"+str(GlobalDB)
+
+def statistic(chat_int):
+    global GlobalDB, IDTOuser
+    text=""
+    temp_DB1 = dict()
+
+    for i in GlobalDB[chat_int]["membersID"]:
+        temp_DB1.update({i:GlobalDB[chat_int][i]})
+    
+    sorted_DB = dict(sorted(temp_DB1.items(), key= lambda item: item[1], reverse=True))
+
+    
+    text = ""
+    return text

@@ -54,6 +54,9 @@ async def nomination(message: types.Message):
     await bot.send_message(text="пидоря дня уже номинирован. И это @"+IDTOuser[GlobalDB[message.chat.id]["id_thePIDOR"]], chat_id=message.chat.id)
 
 
+@dp.message_handler(commands=['stats'])
+async def stat_func(message: types.Message):
+    await 3+3
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
