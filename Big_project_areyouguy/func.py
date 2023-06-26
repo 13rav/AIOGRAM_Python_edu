@@ -94,14 +94,19 @@ def updateDB_thePIDOR(chat_int, id_int, nowDay):
 
 def statistic(chat_int):
     global GlobalDB, IDTOuser
-    text=""
-    temp_DB1 = dict()
+    text_to_return=f"""Топ 10 пидоров:
+"""
+    copy_GlobalDB_stat = dict()
 
     for i in GlobalDB[chat_int]["membersID"]:
-        temp_DB1.update({i:GlobalDB[chat_int][i]})
+        copy_GlobalDB_stat.update({i:GlobalDB[chat_int][i]})
     
-    sorted_DB = dict(sorted(temp_DB1.items(), key= lambda item: item[1], reverse=True))
+    sorted_DB = dict(sorted(copy_GlobalDB_stat.items(), key= lambda item: item[1], reverse=True))
 
-    
-    text = ""
-    return text
+    first_best_userID = list(sorted_DB)[0:10]
+
+    for i in range(len(first_best_userID)):
+        text_to_return = text_to_return + f"""
+        <b>{IDTOuser[first_best_userID[i]]}</b>: {sorted_DB[first_best_userID[i]]}"""
+
+    return str(text_to_return)

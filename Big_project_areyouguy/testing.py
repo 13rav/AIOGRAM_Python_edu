@@ -75,13 +75,24 @@ def checking():
 
 def statistic(chat_int):
     global GlobalDB, IDTOuser
-    text=""
+    text=f"""топ 10 пидоров:
+"""
     test2 = dict()
 
     for i in GlobalDB[chat_int]["membersID"]:
         test2.update({i:GlobalDB[chat_int][i]})
 
     print(test2)
+
+    temp_srez = list(test2)[0:7]
+
+    print(temp_srez)
+
+    for n in range(len(temp_srez)):
+        text = text + f"""
+        <b>{IDTOuser[temp_srez[n]]}</b>:  {GlobalDB["chat1"][temp_srez[n]]}"""
+
+    print(text)
 
 update_DB()
 statistic("chat1")
