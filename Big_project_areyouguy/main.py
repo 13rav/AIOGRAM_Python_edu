@@ -48,6 +48,7 @@ async def nomination(message: types.Message):
         nowDay = now.strftime("%w")
     #GlobalDB[message.chat.id][id_nomination] = GlobalDB[message.chat.id][id_nomination]+1
         check_result01 = updateDB_thePIDOR(message.chat.id, id_nomination, nowDay)
+        await bot.send_animation(message.chat.id, "CgACAgQAAxkBAAEB4hJknzHLV9QQeKZaj9fr1Mr8rQ-KnQAC_gIAAlJcDVPEJXWg1s6K6i8E", )
         await bot.send_message(text="пидор дня @"+IDTOuser[id_nomination], chat_id=message.chat.id)
         return None
     
