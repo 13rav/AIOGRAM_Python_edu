@@ -47,12 +47,14 @@ async def fileID_command(message: types.Message):
     await message.answer(text=str(message.document.file_unique_id)+"   "+str(message.document.file_id))
  """
 
-fer = [(bot.send_message), ()]
+#fer = [(bot.send_message), ()]
 
 @dp.message_handler(commands="regi")
 async def regi_command(message: types.Message):
-   fer1 = await fer[0](chat_id=1176746813, text='rew')#(chat_id=1176746813, text='rew')
-   await fer1(chat_id=message.chat.id, text='rew')
+   fer = [(bot.send_message(chat_id=message.chat.id, text='wwwww')), ()]
+   fer_values
+   await fer[0](chat_id=message.chat.id, text="bbbb")
+   #(chat_id=1176746813, text='rew')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
