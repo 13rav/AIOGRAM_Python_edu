@@ -27,6 +27,9 @@ class reg_user:
         соответстиве id - username 
 
         '''+str(IDTOuser)
+        print(text_msg_answer)
+
+        text_msg_answer = "Этот чат добавлен на учет, скоро мы узнаем кто тут пидор. И первый зареганный участник @"+str(self.username_str)
         return text_msg_answer
 
     def reg_user_1(self):
@@ -41,6 +44,10 @@ class reg_user:
         соответстиве id - username 
 
         '''+str(IDTOuser)
+
+        print(text_msg_answer)
+
+        text_msg_answer = "@"+str(self.usernsme_str)+" зарегестрирован в участниках"
         return text_msg_answer
     
     def reg_user_2(self):
@@ -51,6 +58,9 @@ class reg_user:
         соответстиве id - username 
 
         '''+str(IDTOuser)
+        print(text_msg_answer)
+
+        text_msg_answer = "Ты уже зареган, но на всякий случай я обновил твой username в базе"
         return text_msg_answer
 
     def choose_method(self, value):
@@ -90,6 +100,8 @@ def updateDB_thePIDOR(chat_int, id_int, nowDay):
     GlobalDB[chat_int][id_int] = GlobalDB[chat_int][id_int]+1
     GlobalDB[chat_int]["nowDay"] = nowDay
     GlobalDB[chat_int]["id_thePIDOR"] = id_int
+
+    print("Succes update"+str(GlobalDB))
     return "Succes update"+str(GlobalDB)
 
 def statistic(chat_int):

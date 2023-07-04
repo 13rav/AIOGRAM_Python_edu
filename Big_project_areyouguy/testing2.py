@@ -30,7 +30,8 @@ from aiogram import Dispatcher, Bot, types, executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatMemberUpdated, Message, ChatMember, ContentType
 from TOKEN import TOKEN_API
 from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic
-import random, datetime
+import random, datetime, asyncio
+from messages import list2, list1, chose_list
 
 random.seed(76453332234567890987654323456797654656445690087.887656567)
 gifs_list = ["CgACAgIAAxkBAAN_ZKP0AsOyKhjtIGAvUCP_zZOvR90AAs4rAAJDRelLIEfsMaE_4MgvBA", "CgACAgQAAxkBAAN7ZKPrqSR2MLIoutZ55SBX4N9VKnwAAv4CAAJSXA1TGIuwur40fk4vBA", "CgACAgQAAxkBAAOBZKP0CUFQUKIxV1v-nsD0JSAUCV8AAksCAALf15VSdd8KrZlFl5kvBA"]
@@ -51,10 +52,11 @@ async def fileID_command(message: types.Message):
 
 @dp.message_handler(commands="regi")
 async def regi_command(message: types.Message):
-   fer = [(bot.send_message(chat_id=message.chat.id, text='wwwww')), ()]
-   fer_values
-   await fer[0](chat_id=message.chat.id, text="bbbb")
-   #(chat_id=1176746813, text='rew')
+   s = random.choice(chose_list)
+
+   for i in range(len(s)//2):
+       await s[i](message.chat.id, s[i+(len(s))//2])
+       await asyncio.sleep(1.5)
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

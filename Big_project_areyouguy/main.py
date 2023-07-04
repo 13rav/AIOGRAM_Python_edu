@@ -2,7 +2,8 @@ from aiogram import Dispatcher, Bot, types, executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatMemberUpdated, Message, ChatMember
 from TOKEN import TOKEN_API
 from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic
-import random, datetime
+import random, datetime, asyncio
+from messages import list2, list1, chose_list
 
 offset_utc = datetime.timedelta(hours=3)
 tzinf = datetime.timezone(offset_utc, name="MSK")
@@ -38,26 +39,36 @@ async def nomination(message: types.Message):
         checkMembersID = False
 
     if chatInGlobalDB is None:
-        await bot.send_message(text="воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
+        await bot.send_message(text="Воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
         return None
     if checkMembersID == False:
-        await bot.send_message(text="воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
+        await bot.send_message(text="Воспользуйтесь командой регистрации /registration", chat_id=message.chat.id)
         return None
     if copy_DB[message.chat.id]["nowDay"] != now.strftime("%w"):
         id_nomination = random.choice(copy_DB[message.chat.id]['membersID'])
         nowDay = now.strftime("%w")
     #GlobalDB[message.chat.id][id_nomination] = GlobalDB[message.chat.id][id_nomination]+1
         check_result01 = updateDB_thePIDOR(message.chat.id, id_nomination, nowDay)
-        await bot.send_animation(message.chat.id, "CgACAgQAAxkBAAEB4hJknzHLV9QQeKZaj9fr1Mr8rQ-KnQAC_gIAAlJcDVPEJXWg1s6K6i8E", )
-        await bot.send_message(text="пидор дня @"+IDTOuser[id_nomination], chat_id=message.chat.id)
+        s = random.choice(chose_list)
+        for i in range(len(s)//2):
+            await s[i](message.chat.id, s[i+(len(s))//2])
+            await asyncio.sleep(1.5)
+        await bot.send_message(text="<b>Пидор дня @</b>"+IDTOuser[id_nomination], chat_id=message.chat.id, parse_mode='HTML')
         return None
     
-    await bot.send_message(text="пидоря дня уже номинирован. И это @"+IDTOuser[copy_DB[message.chat.id]["id_thePIDOR"]], chat_id=message.chat.id)
+    await bot.send_message(text="PIDOR дня уже номинирован. И это @"+IDTOuser[copy_DB[message.chat.id]["id_thePIDOR"]], chat_id=message.chat.id)
 
 
 @dp.message_handler(commands=['stats'])
 async def stat_func(message: types.Message):
-    await bot.send_message(text=statistic(message.chat.id), chat_id=message.chat.id)
+    await bot.send_message(text=statistic(message.chat.id), chat_id=message.chat.id, parse_mode='HTML')
+
+@dp.message_handler(commands=['info'])
+async def stat_func(message: types.Message):
+    await bot.send_message(text="""
+/thePIDOR - Запускает спецоперацию по поиску пидора
+/registratin - Зарегаться в участники
+/stats - Топ 10 пидоров""", chat_id=message.chat.id)
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
