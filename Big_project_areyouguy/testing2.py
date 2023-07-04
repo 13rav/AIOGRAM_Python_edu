@@ -46,10 +46,13 @@ async def fileID_command(message: types.Message):
     #await bot.send_video(message.chat.id, "CgACAgQAAxkBAAEB4hJknzHLV9QQeKZaj9fr1Mr8rQ-KnQAC_gIAAlJcDVPEJXWg1s6K6i8E", )
     await message.answer(text=str(message.document.file_unique_id)+"   "+str(message.document.file_id))
  """
+
+fer = [(bot.send_message), ()]
+
 @dp.message_handler(commands="regi")
 async def regi_command(message: types.Message):
-   f = (await bot.send_video(message.chat.id, random.choice(gifs_list), ))
-   f(message)
+   fer1 = await fer[0](chat_id=1176746813, text='rew')#(chat_id=1176746813, text='rew')
+   await fer1(chat_id=message.chat.id, text='rew')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
