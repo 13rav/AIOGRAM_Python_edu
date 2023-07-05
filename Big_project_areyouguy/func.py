@@ -47,7 +47,7 @@ class reg_user:
 
         print(text_msg_answer)
 
-        text_msg_answer = "@"+str(self.usernsme_str)+" зарегестрирован в участниках"
+        text_msg_answer = "@"+str(self.username_str)+" зарегестрирован в участниках"
         return text_msg_answer
     
     def reg_user_2(self):
