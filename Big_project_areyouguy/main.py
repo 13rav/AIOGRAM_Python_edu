@@ -1,13 +1,11 @@
 from aiogram import Dispatcher, Bot, types, executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatMemberUpdated, Message, ChatMember
 from TOKEN import TOKEN_API
-from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic
+from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic, time_upd
 import random, datetime, asyncio
 from messages import list2, list1, chose_list
 
-offset_utc = datetime.timedelta(hours=3)
-tzinf = datetime.timezone(offset_utc, name="MSK")
-now = datetime.datetime.now(tz=tzinf)
+
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
 
@@ -30,6 +28,7 @@ async def reg_command(message: types.Message):
 @dp.message_handler(commands=['thePIDOR'])
 async def nomination(message: types.Message):
     copy_DB = GlobalDB
+    now = time_upd()
 
     chatInGlobalDB = copy_DB.get(message.chat.id)
 
@@ -67,7 +66,7 @@ async def stat_func(message: types.Message):
 async def stat_func(message: types.Message):
     await bot.send_message(text="""
 /thePIDOR - Запускает спецоперацию по поиску пидора
-/registratin - Зарегаться в участники
+/registration - Зарегаться в участники
 /stats - Топ 10 пидоров""", chat_id=message.chat.id)
     
 @dp.message_handler(commands="backcode013")

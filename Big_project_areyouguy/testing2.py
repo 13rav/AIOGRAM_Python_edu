@@ -1,5 +1,14 @@
 from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic
+import random, datetime, asyncio, time
 test_dic={"Alice":6, "Bob":1, "Green":1, "Harry":3, "Liza":5}
+
+def time_upd():
+    offset_utc = datetime.timedelta(hours=3)
+    tzinf = datetime.timezone(offset_utc, name="MSK")
+    now = datetime.datetime.now(tz=tzinf)
+    return now
+
+nowDay = 2
 
 sorted_dic = dict(sorted(test_dic.items(), key = lambda item: item[0]))
 
@@ -25,6 +34,26 @@ updateDB_thePIDOR(111, 984382899234, 1)
 
 print(statistic(111))
 print(GlobalDB)
+
+now2 = time_upd()
+if nowDay != now2.strftime("%w"):
+    id_nomination = random.choice(GlobalDB[111]['membersID'])
+    nowDay = now2.strftime("%w")
+
+print(nowDay)
+print(id_nomination)
+
+nowDay = 3
+time.sleep(60)
+
+now2 = time_upd()
+
+if nowDay != now2.strftime("%w"):
+    id_nomination = random.choice(GlobalDB[111]['membersID'])
+    nowDay = now2.strftime("%w")
+
+print(nowDay)
+print(id_nomination)
 
 for key in GlobalDB:
     print(key)

@@ -1,3 +1,5 @@
+import time, datetime
+
 GlobalDB = {}
 IDTOuser = {}
 """ GlobalDB={
@@ -122,6 +124,11 @@ def statistic(chat_int):
 
     for i in range(len(first_best_userID)):
         text_to_return = text_to_return + f"""
-        <b>{IDTOuser[first_best_userID[i]]}</b>: {sorted_DB[first_best_userID[i]]}"""
+        <b>{IDTOuser[first_best_userID[i]]}</b>    --    {sorted_DB[first_best_userID[i]]}"""
 
     return str(text_to_return)
+
+def time_upd():
+    offset_utc = datetime.timedelta(hours=3)
+    tzinf = datetime.timezone(offset_utc, name="MSK")
+    return datetime.datetime.now(tz=tzinf)
