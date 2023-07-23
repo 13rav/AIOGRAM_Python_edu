@@ -111,7 +111,7 @@ def statistic(chat_int):
     global GlobalDB, IDTOuser
     list_with_str = list()
     value_for_max = ()
-    text_to_return=f"""Топ 10 пидоров:
+    text_to_return=f"""Топ 10 пидоров:<pre>
 """
     copy_GlobalDB_stat = dict()
 
@@ -139,6 +139,7 @@ def statistic(chat_int):
     for i in range(len(list_with_str)):
         text_to_return=text_to_return + str(list_with_str[i])+ f"  --    {sorted_DB[first_best_userID[i]]}"
 
+    text_to_return=text_to_return+"</pre>"
     return str(text_to_return)
 
 def time_upd():
