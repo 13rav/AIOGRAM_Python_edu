@@ -104,10 +104,13 @@ def updateDB_thePIDOR(chat_int, id_int, nowDay):
     GlobalDB[chat_int]["id_thePIDOR"] = id_int
 
     print("Succes update"+str(GlobalDB))
+    print("Succes update"+str(IDTOuser))
     return "Succes update"+str(GlobalDB)
 
 def statistic(chat_int):
     global GlobalDB, IDTOuser
+    list_with_str = list()
+    value_for_max = ()
     text_to_return=f"""Топ 10 пидоров:
 """
     copy_GlobalDB_stat = dict()
@@ -123,8 +126,18 @@ def statistic(chat_int):
     first_best_userID = list(sorted_DB)[0:10]
 
     for i in range(len(first_best_userID)):
-        text_to_return = text_to_return + f"""
-        <b>{IDTOuser[first_best_userID[i]]}</b>    --    {sorted_DB[first_best_userID[i]]}"""
+        list_with_str.append(f"""
+        <b>{IDTOuser[first_best_userID[i]]}</b>""")
+        print(list_with_str[i])
+        value_for_max = value_for_max + (len(list_with_str[i]),)
+
+    for i in range(len(list_with_str)):
+        for k in range(max(value_for_max)-len(list_with_str[i])):
+            list_with_str[i] = list_with_str[i]+" "
+        print(list_with_str[i])
+
+    for i in range(len(list_with_str)):
+        text_to_return=text_to_return + str(list_with_str[i])+ f"  --    {sorted_DB[first_best_userID[i]]}"
 
     return str(text_to_return)
 

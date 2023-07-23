@@ -2,58 +2,52 @@ from func import check_user, GlobalDB, IDTOuser, updateDB_thePIDOR, statistic
 import random, datetime, asyncio, time
 test_dic={"Alice":6, "Bob":1, "Green":1, "Harry":3, "Liza":5}
 
-def time_upd():
-    offset_utc = datetime.timedelta(hours=3)
-    tzinf = datetime.timezone(offset_utc, name="MSK")
-    now = datetime.datetime.now(tz=tzinf)
-    return now
+import datetime, time
 
-nowDay = 2
+GlobalDB = {-1001792492889: {'membersID': [1176746813, 420946976, 437718142, 462989522, 339420375, 473898130, 438456033, 687774772], 1176746813: 9, 'nowDay': None, 'id_thePIDOR': None, 420946976: 9, 437718142: 13, 687774772:12, 462989522: 8, 339420375: 7, 473898130: 5, 438456033: 7}}
 
-sorted_dic = dict(sorted(test_dic.items(), key = lambda item: item[0]))
+IDTOuser = {1176746813: 'rav_pr', 420946976: 'occult_fox', 437718142: 'nikitas21', 462989522: 'Danil5621', 339420375: 'yell0wlamp', 473898130: 'nihaoh', 438456033: 'dimchis3', 687774772: 'vvvr1g'}
 
-print(sorted_dic)
-for i in range(0, 1, 2):
-    sorted2_dic = test_dic.items()
+def statistic(chat_int):
+    global GlobalDB, IDTOuser
+    list_with_str = list()
+    value_for_max = ()
+    text_to_return=f"""Топ 10 пидоров:
+"""
+    copy_GlobalDB_stat = dict()
 
-check_user(111, 122343244235, "andrusha")
-check_user(111, 943278234, "Roma")
-check_user(111, 984382899234, "Daniil")
-check_user(111, 8437818234787, "Ilya")
-check_user(555, 81288914, "Sanya")
-check_user(555, 834895882345, "Grisha")
-check_user(555, 122343244235, "andrusha")
+    if GlobalDB.get(chat_int) is None:
+        return "Нет информации для отображения, пройдите регистрацию"
 
-updateDB_thePIDOR(111, 943278234, 2)
-updateDB_thePIDOR(111, 943278234, 3)
-updateDB_thePIDOR(111, 8437818234787, 2)
-updateDB_thePIDOR(111, 8437818234787, 1)
-updateDB_thePIDOR(111, 8437818234787, 2)
-updateDB_thePIDOR(111, 8437818234787, 4)
-updateDB_thePIDOR(111, 984382899234, 1)
+    for i in GlobalDB[chat_int]["membersID"]:
+        copy_GlobalDB_stat.update({i:GlobalDB[chat_int][i]})
+    
+    sorted_DB = dict(sorted(copy_GlobalDB_stat.items(), key= lambda item: item[1], reverse=True))
 
-print(statistic(111))
-print(GlobalDB)
+    first_best_userID = list(sorted_DB)[0:10]
 
-now2 = time_upd()
-if nowDay != now2.strftime("%w"):
-    id_nomination = random.choice(GlobalDB[111]['membersID'])
-    nowDay = now2.strftime("%w")
+    for i in range(len(first_best_userID)):
+        #list_with_str.append(f"""
+        #<b>{IDTOuser[first_best_userID[i]]}</b>    --    {sorted_DB[first_best_userID[i]]}""")
+        list_with_str.append(f"""
+        <b>{IDTOuser[first_best_userID[i]]}</b>""")
+        print(list_with_str[i])
+        value_for_max = value_for_max + (len(list_with_str[i]),)
 
-print(nowDay)
-print(id_nomination)
+    print(max(
+        value_for_max
+    ))
 
-nowDay = 3
-time.sleep(60)
+    for i in range(len(list_with_str)):
+        for k in range(max(value_for_max)-len(list_with_str[i])):
+            list_with_str[i] = list_with_str[i]+" "
+        print(list_with_str[i])
 
-now2 = time_upd()
+    for i in range(len(list_with_str)):
+        text_to_return=text_to_return + str(list_with_str[i])+ f"  --    {sorted_DB[first_best_userID[i]]}"
 
-if nowDay != now2.strftime("%w"):
-    id_nomination = random.choice(GlobalDB[111]['membersID'])
-    nowDay = now2.strftime("%w")
+    print(str(text_to_return))
+    return str(text_to_return)
 
-print(nowDay)
-print(id_nomination)
-
-for key in GlobalDB:
-    print(key)
+statistic(-1001792492889)
+ 

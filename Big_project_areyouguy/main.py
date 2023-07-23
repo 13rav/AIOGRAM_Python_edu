@@ -72,11 +72,14 @@ async def stat_func(message: types.Message):
 @dp.message_handler(commands="backcode013")
 async def backup_func(message: types.Message):
     copy_DB = GlobalDB
+    copy_DB2 = IDTOuser
 
     for key in copy_DB:
         backup_DB = dict()
         backup_DB.update({key:copy_DB[key]})
         await bot.send_message(chat_id=1176746813, text=str(backup_DB))
+
+    await bot.send_message(chat_id=1176746813, text=str(copy_DB2))
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
