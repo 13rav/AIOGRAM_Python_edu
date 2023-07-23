@@ -132,7 +132,7 @@ def statistic(chat_int):
         value_for_max = value_for_max + (len(list_with_str[i]),)
 
     for i in range(len(list_with_str)):
-        for k in range(max(value_for_max)-len(list_with_str[i])):
+        for k in range(max(value_for_max)-len(list_with_str[i])+4):
             list_with_str[i] = list_with_str[i]+" "
         print(list_with_str[i])
 
